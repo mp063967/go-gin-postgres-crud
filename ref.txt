@@ -1,0 +1,24 @@
+# Create user
+curl -X POST http://localhost:8082/users \
+ -H "Content-Type: application/json" \
+ -d '{"name":"Manish","email":"manish@example.com"}'
+
+
+ curl -X POST http://localhost:8082/users \
+ -H "Content-Type: application/json" \
+ -d '{"name":"Patel","email":"patel@example.com"}'
+
+
+# Get all users
+curl http://localhost:8082/users
+
+# Get by id
+curl http://localhost:8082/users/1
+
+# Update
+curl -X PUT http://localhost:8082/users/1 \
+ -H "Content-Type: application/json" \
+ -d '{"name":"Updated","email":"updated@example.com"}'
+
+# Delete
+curl -X DELETE http://localhost:8082/users/1
