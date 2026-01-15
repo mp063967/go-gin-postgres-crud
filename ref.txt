@@ -55,3 +55,7 @@ PASS
 ok  	go-gin-postgres-crud/handlers	0.006s
 ?   	go-gin-postgres-crud/models	[no test files]
 ?   	go-gin-postgres-crud/routes	[no test files]
+
+
+# concurrency 
+go run scripts/load_users.go
