@@ -1,3 +1,8 @@
+go run main.go 
+or 
+go run .
+
+
 # Create user
 curl -X POST http://localhost:8082/users \
  -H "Content-Type: application/json" \
@@ -16,9 +21,37 @@ curl http://localhost:8082/users
 curl http://localhost:8082/users/1
 
 # Update
-curl -X PUT http://localhost:8082/users/1 \
+curl -X PUT http://localhost:8082/users/2 \
  -H "Content-Type: application/json" \
  -d '{"name":"Updated","email":"updated@example.com"}'
 
 # Delete
-curl -X DELETE http://localhost:8082/users/1
+curl -X DELETE http://localhost:8082/users/2
+
+
+# for test
+go get github.com/DATA-DOG/go-sqlmock
+go mod tidy 
+
+go test ./... -v
+?   	go-gin-postgres-crud	[no test files]
+?   	go-gin-postgres-crud/config	[no test files]
+=== RUN   TestCreateUser
+[GIN] 2026/01/15 - 13:47:49 | 201 |     220.896µs |       192.0.2.1 | POST     "/users"
+--- PASS: TestCreateUser (0.00s)
+=== RUN   TestGetUsers
+[GIN] 2026/01/15 - 13:47:49 | 200 |      58.126µs |       192.0.2.1 | GET      "/users"
+--- PASS: TestGetUsers (0.00s)
+=== RUN   TestGetUserByID
+[GIN] 2026/01/15 - 13:47:49 | 200 |      42.826µs |       192.0.2.1 | GET      "/users/1"
+--- PASS: TestGetUserByID (0.00s)
+=== RUN   TestUpdateUser
+[GIN] 2026/01/15 - 13:47:49 | 204 |      48.674µs |       192.0.2.1 | PUT      "/users/1"
+--- PASS: TestUpdateUser (0.00s)
+=== RUN   TestDeleteUser
+[GIN] 2026/01/15 - 13:47:49 | 204 |      29.418µs |       192.0.2.1 | DELETE   "/users/1"
+--- PASS: TestDeleteUser (0.00s)
+PASS
+ok  	go-gin-postgres-crud/handlers	0.006s
+?   	go-gin-postgres-crud/models	[no test files]
+?   	go-gin-postgres-crud/routes	[no test files]
