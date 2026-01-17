@@ -1,16 +1,12 @@
 package routes
 
 import (
-	"database/sql"
-
 	"go-gin-postgres-crud/handlers"
 
 	"github.com/gin-gonic/gin"
 )
 
-func RegisterRoutes(r *gin.Engine, db *sql.DB) {
-	h := handlers.NewUserHandler(db)
-
+func RegisterRoutes(r *gin.Engine, h *handlers.UserHandler) {
 	users := r.Group("/users")
 	{
 		users.POST("", h.CreateUser)
